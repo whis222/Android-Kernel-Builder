@@ -75,3 +75,9 @@ jobs:
       with:
         name: AnyKernel3-bigshot-KernelSU-${{ env.BUILD_TIME }}
         path: kernel_workspace/AnyKernel3/*
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        path: kernel_workspace/AnyKernel3/*
+        name: AnyKernel3-bigshot-KernelSU-${{ env.BUILD_TIME }}
