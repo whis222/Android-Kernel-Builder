@@ -81,3 +81,4 @@ jobs:
       with:
         path: kernel_workspace/AnyKernel3/*
         name: AnyKernel3-bigshot-KernelSU-${{ env.BUILD_TIME }}
+        tag_name: ${{ github.run_id }}
