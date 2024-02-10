@@ -28,7 +28,7 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/Blackmanx/kernel_realme_sm8250 -b bigshot android-kernel --depth=1
+        git clone https://github.com/Blackmanx/kernel_realme_sm8250 -b bigshot_AOSP android-kernel --depth=1
 
     - name: Setup KernelSU
       run: |
@@ -57,18 +57,18 @@ jobs:
     - name: Make Anykernel3
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/osm0sis/AnyKernel3
+        git clone https://github.com/chilan666/AnyKernel3
         sed -i 's/do.devicecheck=1/do.devicecheck=0/g' AnyKernel3/anykernel.sh
         sed -i 's!block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!block=auto;!g' AnyKernel3/anykernel.sh
         sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' AnyKernel3/anykernel.sh
-        cp android-kernel/out/arch/arm64/boot/Image AnyKernel3/
+        cp android-kernel/out/arch/arm64/boot/Image.gz AnyKernel3/
         rm -rf AnyKernel3/.git* AnyKernel3/README.md
 
     - name: Upload Image
       uses: actions/upload-artifact@v3
       with:
         name: Image-KernelSU-${{ env.BUILD_TIME }}
-        path: kernel_workspace/android-kernel/out/arch/arm64/boot/Image
+        path: kernel_workspace/android-kernel/out/arch/arm64/boot/Image.gz
 
     - name: Upload AnyKernel3
       uses: actions/upload-artifact@v3
