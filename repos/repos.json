@@ -39,8 +39,8 @@
   "AnyKernel3": {
     "use": true,
     "release": true,
-    "repo": "https://github.com/chilan666/AnyKernel3",
-    "branch": "cupida"
+    "repo": "https://github.com/osm0sis/AnyKernel3",
+    "branch": "master"
   }
 }
 ]
